@@ -5,39 +5,39 @@
 
       <title>Abexle</title>
 
-      
+
   </head>
   <body>
-      
+
       @include('partials/navbarStart')
 
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6" style="margin-top: 50px; ">
-           
+
            <h2>
                    Register your Company
-          </h2> 
-          
+          </h2>
+
           <form style="margin-top: 15px;"  id="myForm" name="myForm" action="addEmployer">
-            
+
             <div class="form-group">
               <label for="exampleInputcompany">Company Name</label>
-              <input type="text" class="form-control" id="company_name" name="company_name" required onkeyup="validateCompanyName()">
+              <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Microsoft" required onkeyup="validateCompanyName()">
               <label style="color: red" id="company_name_label"></label>
             </div>
-            
+
             <div class="form-group">
               <label for="exampleInputEmployer">Employer ID</label>
-              <input type="text" class="form-control" id="user_name" name="user_name" aria-describedby="employerName"  required onkeyup="validateEmployerId()">
+              <input type="text" class="form-control" id="user_name" name="user_name" placeholder="min 6, letter & digits" aria-describedby="employerName"  required onkeyup="validateEmployerId()">
               <label style="color: red" id="user_name_label"><?php if (isset($_SESSION['message'])) {
                 echo $_SESSION['message'];
               } ?> </label>
             </div>
-            
+
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="email" name="email"  required onkeyup="validateEmail()">
+              <input type="email" class="form-control" placeholder="abc71@gmail.com" id="email" name="email"  required onkeyup="validateEmail()">
               <label style="color: red" id="email_label"><?php if (isset($_SESSION['message_email'])) {
                 echo $_SESSION['message_email'];
               } ?> </label>
@@ -45,7 +45,7 @@
 
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="password" name="password" minlength="5" maxlength="15" required onkeyup="validatePassword()">
+              <input type="password" class="form-control" id="password" placeholder="min 6" name="password" minlength="5" maxlength="15" required onkeyup="validatePassword()">
               <label style="color: red" id="password_label"></label>
             </div>
 
@@ -54,7 +54,7 @@
               <input type="password" class="form-control" id="confirm_password" name="confirm_password" required onkeyup="validateConfirmPassword()">
               <label style="color: red" id="confirm_password_label"></label>
             </div>
-            
+
             <button type="button" class="btn btn-primary" id="submit_button" onclick="validateForm()">Submit</button>
 
           </form>
@@ -71,7 +71,7 @@
   var isEmployerIdValidate = false;
   var isEmailValidate = false;
   var isPasswordValidate = false;
-  
+
 
   function validateCompanyName() {
     var companyName = document.getElementById("company_name");
@@ -125,7 +125,7 @@
         document.getElementById('email_label').innerHTML = 'missing @';
         isEmailValidate = false;
       }
-      
+
     } else {
       document.getElementById('email_label').innerHTML = 'Invalid, @ or . is missing';
       isEmailValidate = false;
@@ -134,10 +134,10 @@
 
   function validatePassword() {
     var password = document.getElementById("password");
-    
+
     if(password.value.length > 5 && password.value.length < 25)
     {
-      
+
       document.getElementById('password_label').innerHTML = '';
     } else {
       document.getElementById('password_label').innerHTML = 'Invalid, max 25 min 6';
@@ -157,7 +157,7 @@
         document.getElementById('confirm_password_label').innerHTML = 'Password does not match !';
         isPasswordValidate = false;
       }
-      
+
     } else {
       document.getElementById('confirm_password_label').innerHTML = 'Invalid, max 25 min 6';
       isPasswordValidate = false;
@@ -174,13 +174,13 @@
       if(exist){
         alert(msg);
       }
-    } 
+    }
     else {
       document.getElementById('confirm_password_label').innerHTML = 'Invalid Data';
     }
   }
 
-</script> 
+</script>
 
 <script>
     var msg = '{{Session::get('alert')}}';
